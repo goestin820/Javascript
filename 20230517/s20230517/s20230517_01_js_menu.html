@@ -19,7 +19,7 @@
             font-family: arial, sans-serif;
             border-collapse: collapse;
             margin: auto;
-            margin-top : 30px;
+            margin-top: 30px;
         }
 
         #mySelect {
@@ -116,7 +116,7 @@
 
     <table>
         <tr>
-            <th width="5%">品項</th>
+            <th width="5%"></th>
             <th width="15%">照片</th>
             <th width="15%">價格</th>
             <th width="15%">數量</th>
@@ -175,13 +175,14 @@
     </table>
     <br><br>
     <hr>
-    <div id="result">
 
+    <div id="result">
         <button type="button" id="closeBtn" onclick="closeBtnFun();">x</button>
         <div>
             總共金額<span id="mySpan"></span>
         </div>
     </div>
+
     <script>
         // 1.input
         // 2.計算
@@ -204,13 +205,11 @@
             // console.log('item1TotalValue typeof', typeof (item1TotalValue));
             item1Total.value = item1TotalValue;
 
-
             // item2
             let item2PriceValue = Number(item2Price.value);
             let item2CountValue = Number(item2Count.value);
             let item2TotalValue = item2PriceValue * item2CountValue;
             item2Total.value = item2TotalValue;
-
 
             // item3
             let item3PriceValue = Number(item3Price.value);
@@ -247,9 +246,8 @@
                 discount = sum;
             }
 
-
             mySpan.innerText = resultText;
-
+            //讓結果顯現出來
             result.style.display = 'block';
 
         };
@@ -258,7 +256,6 @@
             console.log('closeBtn');
             result.style.display = 'none';
         }
-
 
         function mySelectFun() {
             console.log('mySelectFun');
