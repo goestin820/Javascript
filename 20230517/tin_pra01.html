@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點餐系統</title>
+    <style>
+        * {
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            background-color: lightgoldenrodyellow;
+            border: 1px solid #000;
+            text-align: center;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .container-1,
+        .container-2,
+        .container-3 {
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            background-color: lightgoldenrodyellow;
+            border: 1px solid #000;
+            text-align: center;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .item {
+            /* border: 1px solid #000; */
+            /* width: 10%; */
+            /* margin: 0 auto; */
+            display: flex;
+            flex-direction: column;
+            /* background-color: aquamarine; */
+            /* padding-right: 300px; */
+            /* text-align: center; */
+        }
+
+        .pic {
+            border: 1px solid #000;
+            /* width: 20%; */
+            display: flex;
+            flex-direction: column;
+            background-color: blanchedalmond;
+        }
+
+        .price {
+            border: 1px solid #000;
+            /* width: 25%; */
+            display: flex;
+            flex-direction: column;
+            background-color: lightpink
+        }
+
+        .qty {
+            border: 1px solid #000;
+            /* width: 25%; */
+            display: flex;
+            flex-direction: column;
+            background-color: chartreuse;
+        }
+
+        .sum {
+            border: 1px solid #000;
+            /* width: 10%; */
+            display: flex;
+            flex-direction: column;
+            background-color: coral;
+        }
+
+        .option {
+            width: 80%;
+            margin-top: 10px;
+        }
+
+        .total {
+            width: 80%;
+            margin-top: 10px;
+        }
+
+        .result {
+            width: 80%;
+        }
+
+        .tip {
+            width: 80%;
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="container">
+            <label for="item" class="item">品項</label>
+            <label for="pic">照片</label>
+            <label for="price">價格</label>
+            <label for="qty">數量</label>
+            <label for="calc">計算</label>
+            <label for="sum">小計</label>
+        </div>
+
+        <div class="container-1">
+            <div>1</div>
+            <img src="https://picsum.photos/id/230/200/100" alt="">
+            <input type="number" id="price1">
+            <input type="number" id="qty1">
+            <button type="button" id="mySum1" onclick="mySum1Fun();">小計</button>
+            <div id="sum1">
+                小計金額：
+            </div>
+        </div>
+
+        <div class="container-2">
+            <div>2</div>
+            <img src="https://picsum.photos/id/231/200/100" alt="">
+            <input type="number" id="price2">
+            <input type="number" id="qty2">
+            <button type="button" id="mySum2" onclick="mySum2Fun();">小計</button>
+            <div id="sum2">
+                小計金額：
+            </div>
+        </div>
+
+        <div class="container-3">
+            <div>3</div>
+            <img src="https://picsum.photos/id/234/200/100" alt="">
+            <input type="number" id="price3">
+            <input type="number" id="qty3">
+            <button type="button" id="mySum3" onclick="mySum3Fun();">小計</button>
+            <div id="sum3">
+                小計金額：
+            </div>
+        </div>
+        <!-- 
+        <div class="item">
+            <label for="item">品項</label>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="pic">
+            <label for="pic">照片</label>
+            <img src="https://picsum.photos/id/230/100/100" alt="">
+            <img src="https://picsum.photos/id/231/100/100" alt="">
+            <img src="https://picsum.photos/id/234/100/100" alt="">
+        </div>
+        <div class="price">
+            <label for="price">價格</label>
+            <input type="number" id="price1">
+            <input type="number" id="price2">
+            <input type="number" id="price3">
+        </div>
+        <div class="qty">
+            <label for="qty">數量</label>
+            <input type="number" id="qty1">
+            <input type="number" id="qty2">
+            <input type="number" id="qty3">
+        </div>
+        <div class="sum">
+            <label for="sum">小計</label>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+    </div> -->
+
+        <div class="option">
+            <label for="option">選單</label>
+            <!-- <input type="text" id="opt"> -->
+            <select name="opt" id="opt">
+                <option value="1">內用</option>
+                <option value="2">外帶</option>
+            </select>
+        </div>
+
+        <div class="total">
+            <button type="button" id="myCalc" onclick="myCalcFun()">總計</button>
+        </div>
+
+        <div id="result">
+            總計金額：
+        </div>
+
+        <div class="tip">
+            300塊打八折
+        </div>
+
+        <script>
+            let price1 = document.getElementById('price1');
+            let price2 = document.getElementById('price2');
+            let price3 = document.getElementById('price3');
+            let qty1 = document.getElementById('qty1');
+            let qty2 = document.getElementById('qty2');
+            let qty3 = document.getElementById('qty3');
+            let sum1 = document.getElementById('sum1');
+            let sum2 = document.getElementById('sum2');
+            let sum3 = document.getElementById('sum3');
+
+            console.log('price1', price1);
+            console.log('price2', price2);
+            console.log('price3', price3);
+            console.log('qry1', qty1);
+            console.log('qry2', qty2);
+            console.log('qry3', qty3);
+
+            function mySum1Fun() {
+                let price1Value = price1.value;
+                let qty1Value = qty1.value;
+                let sum1Value = sum1.value;
+                console.log('price1Value', price1Value);
+                console.log('qty1Value', qty1Value);
+                console.log('sum1Value', sum1Value);
+                let sum1Value=Number(price1Value)*Number(qry1Value);
+
+            }
+
+
+
+
+
+
+
+
+        </script>
+</body>
+
+</html>

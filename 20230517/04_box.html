@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            position: fixed;
+            top: 200px;
+            width: 80%;
+            height: 500px;
+            background-color: lightblue;
+            margin-left: 10%;
+
+        }
+
+        #box>button {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            /* margin-top: 30px;
+            margin-left: 95% */
+        }
+
+        #box>div {
+            margin-top: 150px;
+            margin-left: 30px;
+            font-size: 28px;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button type="button" id="closeBtn" onclick="closeBtnFun();">X</button>
+        <div>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, reprehenderit, explicabo necessitatibus
+            blanditiis, perferendis ab temporibus adipisci tenetur libero odio deserunt fuga. Eveniet sed assumenda sunt
+            aspernatur consectetur quam voluptate?
+        </div>
+    </div>
+
+    <script>
+        // function
+        function closeBtnFun (){
+            box.style.display = 'none';
+        }
+
+        // 1.綁定
+        let box = document.getElementById('box');
+        let closeBtn = document.getElementById('closeBtn');
+
+        // 
+    </script>
+
+</body>
+
+</html>

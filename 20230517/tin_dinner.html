@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點餐系統</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            /* overflow: hidden; */
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            /* padding: 8px; */
+            /* width: 20%; */
+            font-size: 24px;
+        }
+
+        tr:nth-child(even) {
+            /* background-color: #dddddd; */
+        }
+
+        button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 80%;
+            padding: 30px;
+        }
+
+        input {
+            font-size: 24px;
+        }
+
+        #tip {
+            color: red;
+        }
+
+        #result {
+            color: green;
+            /* display: none; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>HTML Table</h2>
+
+    <table>
+        <tr>
+            <th width="5%">品項</th>
+            <th width="15%">照片</th>
+            <th width="15%">價格</th>
+            <th width="15%">數量</th>
+            <th>小計</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>
+                <img src="https://picsum.photos/id/230/200/200" alt="">
+            </th>
+            <th>
+                <input type="number" name="" value="100" readonly id="item1Price">
+            </th>
+            <th>
+                <input type="number" name="" value="0" id="item1Count">
+            </th>
+            <th>
+                <input type="number" name="" value="0" id="item1Total">
+            </th>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+                <img src="https://picsum.photos/id/243/200/200" alt="">
+            </td>
+            <td>
+                <input type="number" name="" value="50" readonly id="item2Price">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item2Count">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item2Total">
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>
+                <img src="https://picsum.photos/id/244/200/200" alt="">
+            </td>
+            <td>
+                <input type="number" name="" value="60" readonly id="item3Price">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item3Count">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item3Total">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <button type="button" id="myBtn" onclick="myBtnFun();">計算加總</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <button type="button" id="reSet" onclick="reSetFun();">重設</button>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    <hr>
+
+    <div id="tip">
+        總價滿300元打八折
+    </div>
+
+    <div id="result">
+        總計金額：
+    </div>
+    <!-- 
+    <div class="option">
+        <label for="option">選單</label>
+        <select name="opt" id="opt">
+            <option value="1">內用</option>
+            <option value="2">外帶</option>
+        </select>
+    </div> -->
+
+    <!-- <div class="total">
+        <button type="button" id="myCalc" onclick="myCalcFun()">總計</button>
+    </div> -->
+
+
+
+    <script>
+        // 1.綁定
+        // item1Price item1Count item1Total
+        // item2Price item2Count item2Total
+        // item3Price item3Count item3Total
+        // myBtn
+        // result
+        let item1Price = document.getElementById('item1Price');
+        let item1Count = document.getElementById('item1Count');
+        let item1Total = document.getElementById('item1Total');
+
+        let item2Price = document.getElementById('item2Price');
+        let item2Count = document.getElementById('item2Count');
+        let item2Total = document.getElementById('item2Total');
+
+        let item3Price = document.getElementById('item3Price');
+        let item3Count = document.getElementById('item3Count');
+        let item3Total = document.getElementById('item3Total');
+
+        let myBtn = document.getElementById('myBtn');
+        let tip = document.getElementById('tip');
+        let result = document.getElementById('result');
+
+        // 1.input
+        // 2.計算
+        // 3.output
+
+        // 1.input
+        // 2.計算
+        // 3.output
+
+        // function
+
+        function initFun() {
+            tip.style.display = 'none';
+            result.style.display = 'none';
+            // result.value = 0;
+        }
+
+        function clearInput() {
+            item1Count.value = "0";
+            item2Count.value = "0";
+            item3Count.value = "0";
+        }
+
+        function myBtnFun() {
+            console.log('myBtnFun ok');
+            // key input 來的東西 都先轉型
+            let item1PriceValue = Number(item1Price.value);
+            let item1CountValue = Number(item1Count.value);
+            let item1TotalValue = item1PriceValue * item1CountValue;
+            item1Total.value = item1TotalValue;
+            // console.log('item1PriceValue', item1PriceValue);
+            // console.log('item1PriceValue typeof', typeof (item1PriceValue));
+            // console.log('item1TotalValue', item1TotalValue);
+            // console.log('item1TotalValue typeof', typeof (item1TotalValue));
+
+            let item2PriceValue = Number(item2Price.value);
+            let item2CountValue = Number(item2Count.value);
+            let item2TotalValue = item2PriceValue * item2CountValue;
+            item2Total.value = item2TotalValue;
+
+            let item3PriceValue = Number(item3Price.value);
+            let item3CountValue = Number(item3Count.value);
+            let item3TotalValue = item3PriceValue * item3CountValue;
+            item3Total.value = item3TotalValue;
+
+            // let sum = Number(item1Total.value) + Number(item2Total.value) + Number(item3Total.value);
+            let sum = item1TotalValue + item2TotalValue + item3TotalValue;
+            console.log('sum', sum);
+
+            // 總計金額大於300元，打八折
+            if (sum >= 300) {
+                // sum = Number(sum) * 0.8;
+                sum = sum * 0.8;
+            } else {
+                sum = sum;
+            }
+            // 小計金額
+            result.innerText = sum;
+
+            initFun();
+            result.style.display = 'block';
+        }
+
+
+        function reSetFun() {
+            initFun();
+
+            tip.style.display = "block";
+            clearInput();
+        }
+    </script>
+</body>
+
+</html>

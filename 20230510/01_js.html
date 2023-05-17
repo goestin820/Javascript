@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+    </div>
+    <script>
+        document.getElementById('box').style.backgroundColor = 'red';
+        //let 宣告
+        let helloText = 'Hello JS';
+        console.log(helloText);
+
+        let name = 'kai';
+        // let name = 'tin';
+        // 不能重複 宣告同樣的變數
+        console.log(`hello ${name} -> js`);
+
+        const pi = 3.14;
+        // pi=12345
+        //常數不能改變
+        console.log(pi);
+
+        //var 當變數
+        //{}生命週期 在區間外也可
+
+        name = 'new name';
+        console.log(name);
+
+
+
+
+    </script>
+</body>
+
+</html>
