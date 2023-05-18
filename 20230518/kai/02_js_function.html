@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- function -->
+
+
+    <!-- 好寶寶 -->
+    <script>
+        // function 
+        // 1.好寶寶
+        // 沒有參數
+        function good() {
+            console.log('good');
+        }
+        good();
+
+        // 2. 日期章 月 日
+        function stamp(month, day) {
+            let text = `${month}月 ${day}日`;
+            console.log(text);
+        }
+        stamp(5, 18);
+
+
+        // 3. 有回傳值
+        // let sum = 0;
+        function sumFun(num1, num2) {
+            // let result = num1 + num2;
+            // // sum = result;
+            // // console.log('result', result);
+            // return result;
+            return num1 + num2;
+        }
+        let getSum = sumFun(5, 10);
+        console.log('getSum', getSum);
+
+        // 第一個客人
+        // 100 + 200
+        getSum = sumFun(100,200)
+        console.log('1 sum' , getSum);
+        
+        // 第二個客人
+        // 50 + 10000
+        getSum = sumFun(50,10000)
+        console.log('2 sum' , getSum);
+
+        // ....N
+    </script>
+
+</body>
+
+</html>

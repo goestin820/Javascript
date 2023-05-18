@@ -60,11 +60,13 @@
         }
 
         #result {
+            /* 設定一開始不顯示result結果 */
+            display: none;
             border-radius: 25px;
+            /* 設定position為fixed固定版面 */
             position: fixed;
             top: 15%;
             right: 10%;
-            display: none;
             color: red;
             font-size: 48px;
             text-align: center;
@@ -74,6 +76,7 @@
         }
 
         #result>button {
+            /* 設定關閉X的position為absolute絕對版面 */
             position: absolute;
             right: 30px;
             top: 30px;
@@ -92,14 +95,6 @@
 
             background-color: lightpink;
         }
-
-        /* #result{
-            color: red;
-            font-size: 48px;
-            text-align: center;
-            background-color: lightblue;
-            width: 100%;
-        } */
     </style>
 </head>
 
@@ -107,8 +102,8 @@
 
     <h1 id="myH1">MENU</h1>
 
-    <!-- 內用 白色 預設 -->
-    <!-- 外帶 紅色 -->
+    <!-- 內用1 藍色 (預設) -->
+    <!-- 外帶2 紅色 -->
     <select name="" id="mySelect" onchange="mySelectFun();">
         <option value="1">內用</option>
         <option value="2">外帶</option>
@@ -129,10 +124,10 @@
                 <img src="https://picsum.photos/id/237/200/200" alt="">
             </td>
             <td>
-                <input type="number" name="" value="100" id="item1Price" readonly >
+                <input type="number" name="" value="100" id="item1Price" readonly>
             </td>
             <td>
-                <input type="number" name="" value="0" id="item1Count">
+                <input type="number" name="" value="0" id="item1Count" onchange="changeCount()">
             </td>
             <td>
                 <input type="number" name="" value="0" id="item1Total">
@@ -147,7 +142,7 @@
                 <input type="number" name="" value="50" readonly id="item2Price">
             </td>
             <td>
-                <input type="number" name="" value="0" id="item2Count">
+                <input type="number" name="" value="0" id="item2Count" onchange="changeCount()">
             </td>
             <td>
                 <input type="number" name="" value="0" id="item2Total">
@@ -162,7 +157,7 @@
                 <input type="number" name="" value="60" readonly id="item3Price">
             </td>
             <td>
-                <input type="number" name="" value="0" id="item3Count">
+                <input type="number" name="" value="0" id="item3Count" onchange="changeCount()">
             </td>
             <td>
                 <input type="number" name="" value="0" id="item3Total">
@@ -173,6 +168,10 @@
                 <button type="button" id="myBtn" onclick="myBtnFun();">計算加總</button>
             </td>
         </tr>
+        <tr>
+            <td colspan="5">
+                <p>目前金額 : <span id="nowSum"></span></p>
+            </td>
     </table>
     <br><br>
     <hr>
@@ -194,17 +193,54 @@
         // 3.output
 
         // function
+        function changeCount() {
+            let item1PriceValue = Number(item1Price.value);
+            let item1CountValue = Number(item1Count.value);
+            if (item1CountValue < 0) {
+                item1Count.value = 0;
+            } else {
+                item1Count.value = item1CountValue;
+            }
+            let item1TotalValue = item1PriceValue * item1CountValue;
+            item1Total.value = item1TotalValue;
+
+            let item2PriceValue = Number(item2Price.value);
+            let item2CountValue = Number(item2Count.value);
+            // if (item2CountValue < 0) {
+            //     item2Count.value = 0;
+            //     }else{
+            //         item2Count.value = item2CountValue;
+            //     }
+            let item2TotalValue = item2PriceValue * item2CountValue;
+            item2Total.value = item2TotalValue;
+
+            let item3PriceValue = Number(item3Price.value);
+            let item3CountValue = Number(item3Count.value);
+            // if (item3CountValue < 0) {
+            //     item3Count.value = 0;
+            //     }else{
+            //         item3Count.value = item3CountValue;
+            //     }
+            let item3TotalValue = item3PriceValue * item3CountValue;
+            item3Total.value = item3TotalValue;
+
+            let nowSumValue = item1TotalValue + item2TotalValue + item3TotalValue
+            nowSum.innerText = nowSumValue;
+
+        }
+
+
         function myBtnFun() {
             console.log('myBtnFun ok');
             // key input 來的東西 都先轉型
             let item1PriceValue = Number(item1Price.value);
-            // console.log('item1PriceValue', item1PriceValue);
-            // console.log('item1PriceValue typeof', typeof (item1PriceValue));
             let item1CountValue = Number(item1Count.value);
             let item1TotalValue = item1PriceValue * item1CountValue;
+            item1Total.value = item1TotalValue;
+            // console.log('item1PriceValue', item1PriceValue);
+            // console.log('item1PriceValue typeof', typeof (item1PriceValue));
             // console.log('item1TotalValue', item1TotalValue);
             // console.log('item1TotalValue typeof', typeof (item1TotalValue));
-            item1Total.value = item1TotalValue;
 
             // item2
             let item2PriceValue = Number(item2Price.value);
@@ -276,26 +312,35 @@
         // item3Price item3Count item3Total
         // myBtn
         // result
-        let item1Price = document.getElementById('item1Price');
-        let item1Count = document.getElementById('item1Count');
-        let item1Total = document.getElementById('item1Total');
+        const item1Price = document.getElementById('item1Price');
+        const item1Count = document.getElementById('item1Count');
+        const item1Total = document.getElementById('item1Total');
 
-        let item2Price = document.getElementById('item2Price');
-        let item2Count = document.getElementById('item2Count');
-        let item2Total = document.getElementById('item2Total');
+        const item2Price = document.getElementById('item2Price');
+        const item2Count = document.getElementById('item2Count');
+        const item2Total = document.getElementById('item2Total');
 
-        let item3Price = document.getElementById('item3Price');
-        let item3Count = document.getElementById('item3Count');
-        let item3Total = document.getElementById('item3Total');
+        const item3Price = document.getElementById('item3Price');
+        const item3Count = document.getElementById('item3Count');
+        const item3Total = document.getElementById('item3Total');
 
-        let myBtn = document.getElementById('myBtn');
-        let closeBtn = document.getElementById('closeBtn');
-        let result = document.getElementById('result');
-        let mySpan = document.getElementById('mySpan');
+        const myBtn = document.getElementById('myBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const result = document.getElementById('result');
+        const mySpan = document.getElementById('mySpan');
 
-        let myH1 = document.getElementById('myH1');
-        let mySelect = document.getElementById('mySelect');
+        const myH1 = document.getElementById('myH1');
+        const mySelect = document.getElementById('mySelect');
+        //取得目前金額的id='nowSum'
+        const nowSum = document.getElementById('nowSum');
 
+        //初始化動作
+        //目前金額 changeCount
+        changeCount();
+        
+        let text = myH1.innerText;
+        let text1 = mySpan.innerText
+        console.log('text',text);
 
     </script>
 </body>

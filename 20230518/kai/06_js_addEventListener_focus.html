@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <label for="name">姓名</label>
+        <input type="text" id="name">
+    </p>
+    <p>
+        <label for="mobile">電話</label>
+        <input type="text" id="mobile">
+    </p>
+
+    <script>
+        // 綁定
+        const name = document.getElementById('name');
+        const mobile = document.getElementById('mobile');
+        const inputAll = document.querySelectorAll('input');
+
+        //inputAll
+        inputAll.forEach((element) => {
+            element.addEventListener('focus', function () {
+                console.log('focus ok');
+                console.log(this);
+                this.style.backgroundColor = "lightpink";
+            });
+
+            element.addEventListener('focusout', function () {
+                console.log('focus ok');
+                console.log(this);
+                this.style.backgroundColor = "";
+            });
+        });
+
+
+        // id
+        // name.addEventListener('focus',function(){
+        //     console.log('focus ok');
+        //     console.log(this);
+        //     this.style.backgroundColor = "red";
+        // })
+
+        // name.addEventListener('focusout',function(){
+        //     console.log('focus ok');
+        //     console.log(this);
+        //     this.style.backgroundColor = "";
+        // })
+
+    </script>
+</body>
+
+</html>

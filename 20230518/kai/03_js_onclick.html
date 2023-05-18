@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            top: 100px;
+            left: 100px;
+            width: 300px;
+            height: 300px;
+            /* background-color: lightblue; */
+        }
+
+        .lightpink {
+            background-color: lightpink;
+        }
+
+        .lightblue {
+            background-color: lightblue;
+            /* background-color: lightgreen; */
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>button onclick</h3>
+    <button type="button" id="myBtn" onclick="changeColor();">click</button>
+    <div class="box lightblue" data-color="lightblue">
+        
+    </div>
+
+    <!-- onclick -->
+    <script>
+        function changeColor() {
+            console.log('changeColor');
+            // box.style.backgroundColor = 'lightpink';
+            // className tag attribute class name
+            // box.className = "box lightpink w-100";
+            console.log(box);
+
+            // lightpink or lightcolor
+            let getColor = box.getAttribute('data-color');
+            console.log(getColor);
+            switch (getColor) {
+                case 'lightblue':
+                    box.setAttribute('class', 'box lightpink w-100');
+                    box.setAttribute('data-color', 'lightpink');
+                    break;
+                case 'lightpink':
+                    box.setAttribute('class', 'box lightblue');
+                    box.setAttribute('data-color', 'lightblue');
+                    break;
+                default:
+                    break;
+            }
+
+
+            // tag
+            // attribute
+
+
+        }
+
+        //綁定
+        const myBtn = document.getElementById('myBtn');
+        // const box = document.getElementById('box');
+        const box = document.querySelector('.box');
+
+
+
+
+    </script>
+</body>
+
+</html>

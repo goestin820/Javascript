@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+        }
+
+        .lightblue {
+            background-color: lightblue;
+        }
+
+        .lightpink {
+            background-color: lightpink;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="myBtn">myBtn</button>
+    <br>
+    <br>
+    <br>
+    <div class="box lightblue" data-color="lightblue">
+
+    </div>
+
+    <script>
+        // 綁定
+        const myBtn = document.getElementById('myBtn');
+        const box = document.querySelector('.box');
+
+        //addEventListener
+        // stamp('month','day')
+        myBtn.addEventListener('click', function () {
+            console.log('click ok');
+            let getColor = box.getAttribute('data-color');
+            switch (getColor) {
+                case 'lightblue':
+                    box.setAttribute('class', 'box lightpink')
+                    box.setAttribute('data-color', 'lightpink')
+                    break;
+                case 'lightpink':
+                    box.setAttribute('class', 'box lightblue')
+                    box.setAttribute('data-color', 'lightblue')
+                    break;
+
+                default:
+                    break;
+            }
+        });
+    </script>
+</body>
+
+</html>
