@@ -25,33 +25,47 @@
         const inputAll = document.querySelectorAll('input');
 
         //inputAll
-        inputAll.forEach((element) => {
-            element.addEventListener('focus', function () {
-                console.log('focus ok');
-                console.log(this);
-                this.style.backgroundColor = "lightpink";
-            });
+        // inputAll.forEach((element1) => {
+        //     element1.addEventListener('focus', function () {
+        //         console.log('focus ok');
+        //         console.log(this);
+        //         this.style.backgroundColor = "lightpink";
+        //     });
 
-            element.addEventListener('focusout', function () {
-                console.log('focus ok');
-                console.log(this);
-                this.style.backgroundColor = "";
-            });
-        });
+        //     element1.addEventListener('focusout', function () {
+        //         console.log('focus ok');
+        //         console.log(this);
+        //         // this.style.backgroundColor = "";
+        //         this.style.backgroundColor = "lightblue";
+        //     });
+        // });
 
 
         // id
-        // name.addEventListener('focus',function(){
-        //     console.log('focus ok');
-        //     console.log(this);
-        //     this.style.backgroundColor = "red";
-        // })
+        name.addEventListener('focus',function(){
+            console.log('focus ok');
+            console.log(this);
+            this.style.backgroundColor = "red";
+        })
 
-        // name.addEventListener('focusout',function(){
-        //     console.log('focus ok');
-        //     console.log(this);
-        //     this.style.backgroundColor = "";
-        // })
+        name.addEventListener('focusout',function(){
+            console.log('focus ok');
+            console.log(this);
+            this.style.backgroundColor = "";
+        })
+
+        //mobile
+        mobile.addEventListener('focus',function(){
+            console.log('focus ok');
+            console.log(mobile);
+            mobile.style.backgroundColor = "green";
+        })
+
+        mobile.addEventListener('focusout',function(){
+            console.log('focus ok');
+            console.log(this);
+            this.style.backgroundColor = "";
+        })
 
     </script>
 </body>

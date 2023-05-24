@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>location</h3>
+    <button type="button" id="myBtn">myBtn</button>
+    <button type="button" id="myCount">myCount</button>
+    <p id="myP">
+        按下按鈕顯示目前網址
+    </p>
+
+    <script>
+        function clickFun() {
+            console.log('click ok');
+            let url = window.location.href;
+            console.log('url', url);
+            myP.innerText = url;
+        }
+
+        //1.綁定
+        const myBtn = document.getElementById('myBtn');
+        const myCount = document.getElementById('myCount');
+        const myP = document.getElementById('myP');
+
+        //2. myBtn.addEventListener .......
+        // 1
+        myBtn.addEventListener('click', clickFun);
+        let i = 0;
+        myCount.addEventListener('click', function () {
+            // let i = 0;
+            i++;
+            console.log(`第${i}次`);
+        });
+
+
+    // myBtn2.addEventListener('click', clickFun);
+    // myBtn3.addEventListener('click', clickFun);
+    // myBtn4.addEventListener('click', clickFun);
+    // 2
+    // myBtn.addEventListener('click', clickFun());
+
+    //3. 抓網址 顯示網址
+
+
+    </script>
+</body>
+
+</html>

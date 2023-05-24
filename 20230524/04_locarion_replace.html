@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>replace</h3>
+
+  
+  <button type="button" id="myReplace">replace</button>
+  <button type="button" id="myAssign">assign</button>
+
+  <script>
+    const myReplace = document.getElementById('myReplace');
+    const myAssign = document.getElementById('myAssign');
+
+
+    myReplace.addEventListener('click', function () {
+      // 無法回上一頁
+      console.log('myReplace ok');
+      window.location.replace('https://www.w3schools.com/html/');
+    });
+
+    myAssign.addEventListener('click', function () {
+      // 可以回上一頁
+      console.log('myAssign ok');
+      window.location.assign('https://www.w3schools.com/html/');
+      // window.open('https://www.w3schools.com/html/');
+    });
+
+  </script>
+
+</body>
+
+</html>

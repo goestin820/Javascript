@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // document.write 測試使用
+        // 盡量還是用console.log
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= 9; j++) {
+                // i 數字 toString() 變成字串
+                // 字串方法 padStart(位數,補0)
+                let iText = i.toString().padStart(2, '0');
+                let jText = j.toString().padStart(2, '0');
+                let ijText = (i * j).toString().padStart(2, '0');
+                document.write(`${iText} * ${jText} = ${ijText} &nbsp;&nbsp;&nbsp;`);
+
+            }
+            document.write(`<br>`);
+        }
+    </script>
+</body>
+
+</html>
