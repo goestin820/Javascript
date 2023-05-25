@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- setTimeout -->
+    <!-- 過一段時間做....動作 -->
+    <button type="button" id="myBtn">start</button>
+    <button type="button" id="mystop">stop</button>
+    <p id="result">原本的文字</p>
+    <script>
+        // 綁定
+        const myBtn = document.getElementById('myBtn');
+        const myStop = document.getElementById('myStop');
+        const result = document.getElementById('result');
+        let time = 0;
+        // setTimeout(function,時間);
+        // setInterval(function,時間);
+        function action() {
+            myBtn.addEventListener('click', function () {
+                let myTime = setInterval(function () {
+                    console.log('hello setInterval');
+                    time = time + 1;
+                    result.innerText = time;
+                    if (time >= 10) {
+                        clearInterval(myTime)
+                    }
+                }, 1000);
+            });
+        }
+
+    </script>
+</body>
+
+</html>

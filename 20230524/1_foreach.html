@@ -37,14 +37,14 @@
         //         console.log(`hello key${key}`);
         //     };
 
-        // box.forEach(function (value, key) {
-        //     console.log('value', value);
-        //     console.log('key', key);
-        //     value.style.backgroundColor = 'red';
-        //     value.addEventListener('click', function () {
-        //         console.log(`hello key${key}`);
-        //     });
-        // });
+        box.forEach(function (value, key) {
+            console.log('value', value);
+            console.log('key', key);
+            value.style.backgroundColor = 'red';
+            value.addEventListener('click', function () {
+                console.log(`hello key${key}`);
+            });
+        });
 
         let myArr = ['amy', 'bob', 'cat'];
         console.log('Array.isArray(myArr) => ', Array.isArray(myArr));
