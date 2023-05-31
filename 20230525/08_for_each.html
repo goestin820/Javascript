@@ -45,6 +45,16 @@
         });
         console.log('sum100', sum100);
 
+        let sum1001 = 0;
+        myArr.forEach(function (value, key) {
+            if (value >= 100) {
+                //return false等同於continue效果，因foreach無continue
+                sum1001 = sum1001 + value;
+            }
+            return false;
+        });
+        console.log('sum1001', sum1001);
+
         // 練習三 <100 總共的營業額是多少
         let sum99 = 0;
         myArr.forEach(function (value, key) {
@@ -55,17 +65,29 @@
         });
         console.log('sum99', sum99);
 
+        let sum991 = 0;
+        myArr.forEach(function (value, key) {
+            if (value < 100) {
+                sum991 = sum991 + value;
+            }
+            return false;
+        });
+        console.log('sum991', sum991);
+
         // 練習四 第一筆300元的index索引值是多少？
         let getIndexArr = [];
         myArr.forEach(function (value, key) {
             if (value >= 299) {
-                getIndexArr.push(key);                
+                getIndexArr.push(key);
+                getIndexArr.push(value);
             }
         });
-        console.log('getIndexArr',getIndexArr);
-        console.log('getIndexArr[0]',getIndexArr[0]);
-        console.log('getIndexArr[1]',getIndexArr[1]);
-        console.log('getIndexArr[2]',getIndexArr[2]);
+        console.log('getIndexArr', getIndexArr);
+        console.log('getIndexArr[0]', getIndexArr[0]);
+        console.log('getIndexArr[1]', getIndexArr[1]);
+        console.log('getIndexArr[2]', getIndexArr[2]);
+        console.log('getIndexArr[3]', getIndexArr[3]);
+        console.log('getIndexArr[4]', getIndexArr[4]);
     </script>
 </body>
 

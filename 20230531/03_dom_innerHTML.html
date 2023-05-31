@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            margin: 0 auto;
+            border: 1px solid black;
+            text-align: center;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>TR elements define table rows</h2>
+    <table style="width:80%" id="myTable">
+    </table>
+    <br>
+    <table style="width:80%" id="myTable1">
+    </table>
+
+    <script>
+        // 1.綁定
+        const myTable = document.getElementById('myTable');
+        const myTable1 = document.getElementById('myTable1');
+
+        // 2.分別宣告myObj物件及myArr陣列
+        let myObj = {
+            's1': 'amy',
+            's2': 'bob',
+            's3': 'cat',
+            's4': 'dog',
+            's5': 'egg',
+        }
+
+        let myArr = [
+            's1'='amy',
+            's2'='bob',
+            's3'='cat',
+            's4'='dog',
+            's5'='egg'
+        ]
+
+        // let myArr1 = [
+        //     {
+        //         'name': 'amy',
+        //         'mobile': '0911-111-111'
+        //     },
+        //     {
+        //         'name': 'bob',
+        //         'mobile': '0922-222-222'
+        //     }
+        // ];
+
+        // 3.分別宣告myString、myString1
+        let myString = `
+        <tr>
+            <th>座號</th>
+            <th>姓名</th>
+        </tr>  
+        `;
+
+        let myString1 = `
+        <tr>
+            <th>座號</th>
+            <th>姓名</th>
+        </tr>  
+        `;
+
+        // let myString2 = `
+        // <tr>
+        //     <th>姓名</th>
+        //     <th>電話</th>
+        // </tr>  
+        // <tr>
+        //     <td>git</th>
+        //     <td>0900-000-000</th>
+        // </tr>  
+        // `;    
+
+        // myObj.forEach(element => {
+        //     console.log('element', element);
+        // });
+        // object 不能用 array.foreach
+        // 用for in 抓object key / for of 抓object value     
+
+
+        // 4.分別用for-in、foreach取Ker-Value值
+        for (const key in myObj) {
+            console.log(`${key} => ${myObj[key]}`);
+            myString += `
+            <tr>
+                <td>${key}</td>
+                <td>${myObj[key]}</td>
+             </tr>  
+            `;
+        }
+
+
+        let myName = [];
+        let myMobile = [];
+        // myArr.forEach(value => {
+        //     console.log('value', value);
+        //     console.log('value.s1', value.s1);
+        //     console.log('value.mobile', value.mobile);
+
+        myArr.forEach(function (value, key) {
+            console.log(`key => value , ${key} => ${value}`);
+            return key,value;
+        });
+
+        myString1 += `
+            <tr>
+                <td>${key}</td>
+                <td>${value}</td>
+             </tr>  
+            `;
+        
+
+        //5. 將myTable之HTML，用innerHTML替換為myString
+        myTable.innerHTML = myString;
+        myTable1.innerHTML = myString1;
+
+
+        // foreach js => array method
+        // object 不能用
+
+        // myString += `
+        // <tr>
+        //     <td id="td11">data1</td>
+        //     <td id="td12">data2</td>
+        // </tr>
+        // `;
+
+        // myString += `
+        // <tr>
+        //     <td id="td21">data2</td>
+        //     <td id="td22">data3</td>
+        // </tr>
+        // `;
+
+        // myString += `
+        // <tr>
+        //     <td id="td31">data4</td>
+        //     <td id="td32">data555</td>
+        // </tr>
+        // `;
+
+        // console.log('myArr', myArr);
+        // console.log('myArr', myArr[0]);
+        // console.log('myArr', myArr[1]);
+    </script>
+</body>
+
+</html>

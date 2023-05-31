@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>TR elements define table rows</h2>
+    <table style="width:80%" id="myTable">
+
+    </table>
+
+    <script>
+        //綁定
+        const s1 = document.getElementById("s1");
+        const s1name = document.getElementById("s1name");
+        const s2 = document.getElementById("s2");
+        const s2name = document.getElementById("s2name");
+        const s3 = document.getElementById("s3");
+        const s3name = document.getElementById("s3name");
+        const myTable = document.getElementById("myTable")
+
+        myTable.innerHTML =
+            `
+        <tr>
+            <th>座號</th>
+            <th>姓名</th>
+        </tr>
+        <tr>
+            <td id="s1"></td>
+            <td id="s1name"></td>
+        </tr>
+        <tr>
+            <td id="s2"></td>
+            <td id="s2name"></td>
+        </tr>
+        <tr>
+            <td id="s3"></td>
+            <td id="s3name"></td>
+        </tr>
+             `
+
+        //放入表格
+        let myObj = {
+            s1: 'amy', 's2': 'bob', 's3': 'cat',
+        }
+        let myObjkeys = Object.keys(myObj);
+
+        s1.innerText = myObjkeys[0];
+        s1name.innerText = myObj['s1'];
+        s2.innerText = myObjkeys[1];
+        s2name.innerText = myObj['s2'];
+        s3.innerText = myObjkeys[2];
+        s3name.innerText = myObj.s3;
+    </script>
+</body>
+
+</html>
