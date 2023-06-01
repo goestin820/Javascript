@@ -44,13 +44,12 @@
         //Array.reduce( function(accumulator, currentValue, currentIndex可省略, array), initialValue)
         // 如未提供initialValue，accumulator(累計值)會取陣列的第一個元素也就是 1，currentValue會從陣列的第二個值開始 loop
         // 如有提供initialValue，accumulator會從initialValue開始計算，後面接續currentValue的值開始累計，即 currentValue會從陣列的第一個值開始loop
-        let numArr = [1,2,3,4,5];
+        let numArr = [1,2,3,4,5,6,7,8,9,10];
         let getSum = numArr.reduce(function (total, value, key) {
-            console.log('value', value);
             console.log('total', total);
+            console.log('value', value);
             return total + value;
-        });
+        },10);
     </script>
 </body>
-
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="myBtn" id="myBtn">myBtn</button>
+    <script>
+        const myBtn = document.getElementById('myBtn');
+
+        // property 變數
+        // method 方法 函式
+        let myObj = {
+            'name': 'amy',
+            'mobile': '0911-111-111',
+            'hello': function () {
+                console.log('hello');
+            },
+            'sayAll': function () {
+                console.log('this', this);
+                console.log(`Hello ${this.name} ${this.mobile}`);
+            },
+            'helloArrow': () => {
+                console.log('this', this);
+                console.log('myObj', myObj);
+                console.log('hello Arrow');
+            },
+        }
+
+        // console.log('myObj.name', myObj.name);
+        // console.log('myObj["mobile"]', myObj['mobile']);
+        // myObj.hello();
+
+        myBtn.addEventListener('click', function () {
+            // myObj.hello();
+            // myObj.sayAll();
+            myObj.helloArrow();
+
+        });
+    </script>
+</body>
+
+</html>
