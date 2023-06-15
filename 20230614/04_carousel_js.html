@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="https://picsum.photos/id/42/1920/300" alt="" id="myImg">
+        </div>
+    </div>
+    <button type="button" id="leftBtn">leftBtn</button>
+    <button type="button" id="rightBtn">rightBtn</button>
+
+    <script>
+        const myImg = document.getElementById('myImg');
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+
+        const imgArr = [43, 58, 66];
+        // console.log('imgArr',imgArr);
+        let imgIndex = 0;
+
+        leftBtn.addEventListener('click', function () {
+            console.log('leftBtn ok');
+        });
+
+        rightBtn.addEventListener('click', function () {
+            console.log('rightBtn ok');
+            
+            if (imgIndex > 1) {
+                imgIndex = 0;
+            } else {
+                imgIndex += 1;
+            }
+
+            let textImg = `https://picsum.photos/id/${imgArr[imgIndex]}/1920/300`;
+            console.log('textImg', textImg);
+
+            myImg.setAttribute('src', textImg);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .carousel-inner>img {
+            width: 100%;
+            height: 100px;
+        }
+
+        .h-20vh {
+            height: 40vh;
+        }
+
+        .news {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 ">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="4000">
+                            <img src="./06/0.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="./06/17.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="./06/15.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="./06/16.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="./06/22.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="./06/18.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="./06/25.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="4000">
+                            <img src="./06/champion.jpg" class="d-block w-100 h-20vh" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <nav class="navbar" style="background-color: #fd9095;">
+                        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                            <div class="container">
+                                <a class="navbar-brand" href="#">NBA Club</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">News</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#">Viedos</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                links
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="https://www.nba.com/"><NBA class="com"></NBA></a></li>
+                                                <li><a class="dropdown-item" href="https://www.espn.com/">ESPN</a></li>
+                                                <li><a class="dropdown-item" href="https://eltaott.tv/sports/">ELTA TV體育台</a></li>                                              
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </nav>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-6 mb-4 news ">2023年NBA總冠軍賽落幕，丹佛金塊隊94：89擊敗邁阿密熱火隊，拿下隊史47年首座總冠軍，金塊一哥約基奇（Nikola
+                Jokic）單場進帳28分、16籃板、4助攻，成為聯盟史上首位單一季後賽在得分、籃板、助攻都排名第一的球員，他的表現也為自己贏得總冠軍賽MVP。
+
+                儘管今年與例行賽MVP三連霸擦身而過，約基奇在季後賽展現對於比賽的宰制力，包括今天封王戰在內，繳出一張平均30分、13.5籃板、9.5助攻的準大三元數據，且命中率5成5、三分球命中率4成66、罰球命中率8成，高效率的表現毫無疑問成為金塊奪冠最大功臣。
+
+                今年季後賽期間，約基奇更是打破多項紀錄，包括達成單一季後賽史上最多次大三元、中鋒單場最高助攻數，今天高捧總冠軍賽MVP獎座，更是史上選秀順位最低（第二輪第41順位）的總冠軍賽MVP。</div>
+            <div class="col-6 mb-4 w-50">
+                <!-- <img src="./image/FMVP.jpg" width="1024" height="768" alt=""> -->
+                <!-- <img src="./image/FMVP.jpg" width="940" height="520" alt=""> -->
+                <img src="./image/FMVP.jpg" width="100%" height="520" alt="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"> <iframe width="100%" height="420" src="https://www.youtube.com/embed/6RPQmZFoazQ"
+                    title="2023 NBA 總冠軍 丹佛金塊 頒獎典禮｜2023 NBA 總冠軍賽" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe></div>
+            <div class="col-8 news">
+                丹佛金塊隊本季以西部第一順位之姿挺進NBA季後賽，接連淘汰明尼蘇達灰狼、鳳凰城太陽及洛杉磯湖人隊，順利殺進總冠軍賽，陣中兩屆年度MVP約基奇表現關鍵。
+
+                回到丹佛主場的關門戰，約基奇貢獻28分、16籃板，尤其在決勝節展現出色防守實力，擋下熱火的反撲，讓他榮膺FMVP。值得一提的是，約基奇也是史上選秀順位最低FMVP，他在2014年的選秀會上在第二輪總順位第41位獲選，成為NBA低順位高成就的經典傳奇。
+            </div>
+        </div>
+
+        <div class="row bt-4">
+            <div class="card text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" href="#">相關連結</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">回首頁</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">NBA Store</h5>
+                    <p class="card-text">歡迎光臨NBA線上購物網</p>
+                    <a href="https://www.nbastore.tw" class="btn btn-primary">前往</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
