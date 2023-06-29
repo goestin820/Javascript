@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+
+        .col-bg {
+            background-color: lightgrey;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- button按鈕 -->
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4 text-center col-bg">
+                <button type="button" class="btn btn-primary" data-go="#box1" data-color="bg-primary"
+                    data-now-color="black" data-num=10>Primary</button>
+            </div>
+            <div class="col-4 text-center col-bg">
+                <button type="button" class="btn btn-danger" data-go="#box2" data-color="bg-danger"
+                    data-now-color="black" data-num=20>Danger</button>
+            </div>
+            <div class="col-4 text-center col-bg">
+                <button type="button" class="btn btn-success" data-go="#box3" data-color="bg-success"
+                    data-now-color="black" data-num=30>Success</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- box方形 -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4 col-bg">
+                <div class="box mx-auto bg-dark" id="box1" data-num="10"></div>
+            </div>
+            <div class="col-4 col-bg">
+                <div class="box mx-auto bg-dark" id="box2" data-num="20"></div>
+            </div>
+            <div class="col-4 col-bg ">
+                <div class="box mx-auto bg-dark" id="box3" data-num="30"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1.綁定全部button按鈕(class名稱為.btn)，並存入btns變數
+        let btns = document.querySelectorAll('.btn');
+        console.log('btns', btns);
+
+        // 2.將btns變數內所有的值取出來
+        btns.forEach(element => {
+            console.log('element', element);
+            
+            // 取出data-num屬性的值，並指派給innerText
+            element.innerText = element.getAttribute('data-num');
+
+            // 3.將btns取出的值，加入addEventListener事件監聽
+            element.addEventListener('click', function () {
+                // console.log('click OK');
+                console.log('click item', element);
+
+                // 取出this的'data-go'屬性值，並存入dataGo變數
+                let dataGo = this.getAttribute('data-go');
+                console.log('dataGo', dataGo);
+
+                // 取出this的'data-color'屬性值，並存入dataColor變數
+                let dataColor = this.getAttribute('data-color');
+                console.log('data-color', dataColor);
+
+                // 運用querySelector來綁定dataGo(如#box1)，並存入now變數
+                const now = document.querySelector(dataGo);
+                console.log('now', now);
+
+                // 用setAttribute重新設定class屬性的值
+                // now.setAttribute('class', `box mx-auto ${dataColor}`);
+
+                // 練習一 切換顏色
+                // if判斷式，假如class屬性值包含'bg-dark'，就用setAttribute重新設定class屬性的值
+                if (now.classList.contains('bg-dark')) {
+                    now.setAttribute('class', `box ${dataColor}`);
+                } else {
+                    now.setAttribute('class', `box mx-auto bg-dark`);
+                }
+
+                // 方法二 增加data-now-color
+                // now.classList.toggle(`${dataColor}`);
+
+
+                // 練習二  每按一次btn-num數量減1
+                let dataNum1 = now.getAttribute('data-num');
+                console.log('dataNum1',dataNum1);
+                
+                // 1.抓到element的data-num屬性值
+                let dataNum = Number(this.getAttribute('data-num'));
+
+                // 2.data-num 減1
+                dataNum = dataNum - 1;
+                if (dataNum <= 0) {
+                    dataNum = 0;
+                }
+
+                // 3.重新設定data-num屬性值
+                this.setAttribute('data-num', dataNum);
+
+                // 4.將btn按鈕的顯示文字換掉
+                this.innerText = dataNum;
+            });
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
