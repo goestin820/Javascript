@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #myH1 {
+            background-color: lightblue;
+            text-align: center;
+            height: 100px;
+            margin-top: 10px;
+            padding-top: 30px;
+        }
+
+        table {
+            width: 90%;
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        #mySelect {
+            position: fixed;
+            top: 5%;
+            left: 90%;
+            /* width: 40%; */
+            /* background-color: lightgreen; */
+            /* margin-top: 10px; */
+            font-size: 30px;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            /* padding: 8px; */
+            /* width: 20%; */
+
+        }
+
+        tr:nth-child(even) {
+            /* background-color: #dddddd; */
+        }
+
+        #myBtn {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            width: 80%;
+            padding: 30px;
+        }
+
+        input {
+            font-size: 50px;
+            height: 60px;
+            width: 80%
+        }
+
+        #result {
+            border-radius: 25px;
+            position: fixed;
+            top: 15%;
+            right: 10%;
+            display: none;
+            color: red;
+            font-size: 48px;
+            text-align: center;
+            background-color: lightblue;
+            width: 80%;
+            height: 70vh;
+        }
+
+        #result>button {
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            font-size: 30px;
+        }
+
+        #result>div {
+            margin: auto;
+            /* position: absolute; */
+            /* left: 30px; */
+            /* bottom: 150px; */
+            margin-top: 250px;
+            font-size: 30px;
+            text-align: center;
+            width: 50%;
+
+            background-color: lightpink;
+        }
+
+        /* #result{
+            color: red;
+            font-size: 48px;
+            text-align: center;
+            background-color: lightblue;
+            width: 100%;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <h1 id="myH1">MENU</h1>
+
+    <!-- 內用 白色 預設 -->
+    <!-- 外帶 紅色 -->
+    <select name="" id="mySelect" onchange="mySelectFun();">
+        <option value="1">內用</option>
+        <option value="2">外帶</option>
+    </select>
+
+
+    <table>
+        <tr>
+            <th width="5%"></th>
+            <th width="15%">照片</th>
+            <th width="15%">價格</th>
+            <th width="15%">數量</th>
+            <th>小計</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>
+                <img src="https://picsum.photos/id/237/200/200" alt="">
+            </td>
+            <td>
+                <input type="number" name="" value="100" id="item1Price" readonly >
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item1Count">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item1Total">
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+                <img src="https://picsum.photos/id/240/200/200" alt="">
+            </td>
+            <td>
+                <input type="number" name="" value="50" readonly id="item2Price">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item2Count">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item2Total">
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>
+                <img src="https://picsum.photos/id/241/200/200" alt="">
+            </td>
+            <td>
+                <input type="number" name="" value="60" readonly id="item3Price">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item3Count">
+            </td>
+            <td>
+                <input type="number" name="" value="0" id="item3Total">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5">
+                <button type="button" id="myBtn" onclick="myBtnFun();">計算加總</button>
+            </td>
+        </tr>
+    </table>
+    <br><br>
+    <hr>
+
+    <div id="result">
+        <button type="button" id="closeBtn" onclick="closeBtnFun();">x</button>
+        <div>
+            總共金額<span id="mySpan"></span>
+        </div>
+    </div>
+
+    <script>
+        // 1.input
+        // 2.計算
+        // 3.output
+
+        // 1.input
+        // 2.計算
+        // 3.output
+
+        // function
+        function myBtnFun() {
+            console.log('myBtnFun ok');
+            // key input 來的東西 都先轉型
+            let item1PriceValue = Number(item1Price.value);
+            // console.log('item1PriceValue', item1PriceValue);
+            // console.log('item1PriceValue typeof', typeof (item1PriceValue));
+            let item1CountValue = Number(item1Count.value);
+            let item1TotalValue = item1PriceValue * item1CountValue;
+            // console.log('item1TotalValue', item1TotalValue);
+            // console.log('item1TotalValue typeof', typeof (item1TotalValue));
+            item1Total.value = item1TotalValue;
+
+            // item2
+            let item2PriceValue = Number(item2Price.value);
+            let item2CountValue = Number(item2Count.value);
+            let item2TotalValue = item2PriceValue * item2CountValue;
+            item2Total.value = item2TotalValue;
+
+            // item3
+            let item3PriceValue = Number(item3Price.value);
+            let item3CountValue = Number(item3Count.value);
+            let item3TotalValue = item3PriceValue * item3CountValue;
+            item3Total.value = item3TotalValue;
+
+            // 總金額
+            let sum = item1TotalValue + item2TotalValue + item3TotalValue;
+            console.log(sum);
+
+            // 300以上 打八折
+            // sum 原價 300
+            // discount 折扣價 240
+
+            let resultText = `
+                ${item1PriceValue} * ${item1CountValue} = ${item1TotalValue}
+                ${item2PriceValue} * ${item2CountValue} = ${item2TotalValue}
+                ${item3PriceValue} * ${item3CountValue} = ${item3TotalValue}
+                原價 => ${sum}`;
+
+            let discount = 0;
+
+            // resultText += 'xxx'
+            // resultText = resultText + 'xxxx'
+
+            if (sum >= 300) {
+                discount = sum * 0.8;
+                resultText += `
+                300以上打八折
+                優惠價 => ${discount}            
+            `;
+            } else {
+                discount = sum;
+            }
+
+            mySpan.innerText = resultText;
+            //讓結果顯現出來
+            result.style.display = 'block';
+
+        };
+
+        function closeBtnFun() {
+            console.log('closeBtn');
+            result.style.display = 'none';
+        }
+
+        function mySelectFun() {
+            console.log('mySelectFun');
+            mySelectValue = mySelect.value;
+            console.log('mySelectValue', mySelectValue);
+            if (mySelectValue == 1) {
+                myH1.style.backgroundColor = 'lightblue';
+            } else {
+                myH1.style.backgroundColor = 'lightpink';
+            }
+        }
+
+
+        // 綁定
+        // item1Price item1Count item1Total
+        // item2Price item2Count item2Total
+        // item3Price item3Count item3Total
+        // myBtn
+        // result
+        let item1Price = document.getElementById('item1Price');
+        let item1Count = document.getElementById('item1Count');
+        let item1Total = document.getElementById('item1Total');
+
+        let item2Price = document.getElementById('item2Price');
+        let item2Count = document.getElementById('item2Count');
+        let item2Total = document.getElementById('item2Total');
+
+        let item3Price = document.getElementById('item3Price');
+        let item3Count = document.getElementById('item3Count');
+        let item3Total = document.getElementById('item3Total');
+
+        let myBtn = document.getElementById('myBtn');
+        let closeBtn = document.getElementById('closeBtn');
+        let result = document.getElementById('result');
+        let mySpan = document.getElementById('mySpan');
+
+        let myH1 = document.getElementById('myH1');
+        let mySelect = document.getElementById('mySelect');
+
+
+    </script>
+</body>
+
+</html>

@@ -27,12 +27,23 @@
         const leftBtn = document.getElementById('leftBtn');
         const rightBtn = document.getElementById('rightBtn');
 
-        const imgArr = [43, 58, 66];
+        const imgArr = [42, 57, 65];
         // console.log('imgArr',imgArr);
         let imgIndex = 0;
 
         leftBtn.addEventListener('click', function () {
             console.log('leftBtn ok');
+
+            if (imgIndex < 2) {
+                imgIndex = 0;
+            } else {
+                imgIndex -= 1;
+            }
+
+            let textImg = `https://picsum.photos/id/${imgArr[imgIndex]}/1920/300`;
+            console.log('textImg', textImg);
+
+            myImg.setAttribute('src', textImg);
         });
 
         rightBtn.addEventListener('click', function () {
