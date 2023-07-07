@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .box {
+            width: 100%;
+            height: 500px;
+            background-color: lightblue;
+            display: none;
+        }
+
+        .coverBox {
+            /* display: none; */
+            position: fixed;
+            /* position: absolute; */
+            width: 80%;
+            height: 80vh;
+            left: 10%;
+            top: 10vh;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- 將每個按鈕要顯示的分頁，分別寫入一個data-self屬性="顯示分頁id"，並新增一個.pageBtn Class -->
+        <button type="button" class="pageBtn btn btn-primary" data-self="#page1">Primary</button>
+        <button type="button" class="pageBtn btn btn-secondary" data-self="#page2">Secondary</button>
+        <button type="button" class="pageBtn btn btn-success" data-self="#page3">Success</button>
+        <button type="button" class="pageBtn btn btn-danger" data-self="#page4">Danger</button>
+        <button type="button" class="pageBtn btn btn-warning" data-self="#page5">Warning</button>
+        <button type="button" class="btn btn-primary" data-self="#myModal" id="modalBtn">Modal</button>
+    </div>
+
+    <!-- 將每個分頁加上id="pageX"，作為button連結的目標 -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div id="page1" class="box mt-5">
+                    page1
+                </div>
+                <div id="page2" class="box mt-5">
+                    page2
+                </div>
+                <div id="page3" class="box mt-5">
+                    page3
+                </div>
+                <div id="page4" class="box mt-5">
+                    page4
+                </div>
+                <div id="page5" class="box mt-5">
+                    page5
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 設定彈跳視窗畫面，加上id="myModal" -->
+    <div class="coverBox" id="myModal">
+        <div class="position-relative">
+            <div class="position-absolute top-0 end-0 mt-2 me-2">
+                <!-- 設定關閉視窗符號X，加上id="closeBtn" -->
+                <button type="button" class="btn btn-danger" id="closeBtn">x</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // JQUERY 放在ready內
+        $(document).ready(function () {
+            // 1.綁定
+            const btns = $('.pageBtn');
+            const boxs = $('.box');
+            const modalBtn = $('#modalBtn'); //Modal按鈕
+            const myModal = $('#myModal');  //彈跳視窗畫面
+            const closeBtn = $('#closeBtn'); //關閉彈跳視窗X按鈕
+            console.log('btns', btns);
+
+            // 2.宣告每個按鈕的click事件
+            btns.click(function () {
+                console.log('$(this)', $(this));
+
+                // 3.取得每個按鈕的data-self值，並指派給getDataSelf變數
+                let getDataSelf = $(this).attr('data-self');
+                // let getDataSelf1 = $(this).data('self');
+                console.log('getDataSelf', getDataSelf);
+
+                // 初始化=>將所有分頁全部隱藏 
+                boxs.hide();
+
+                // 初始化=>移除所有分頁btn-lg屬性，初始化的順序一定要在單獨處理的程式碼前面!!
+                btns.removeClass('btn-lg');
+
+                // 單獨增加點選到的分頁btn-lg屬性
+                $(this).addClass('btn-lg');
+
+                // 單獨顯示點選到的分頁
+                $(getDataSelf).show();
+            });
+
+            modalBtn.click(function () {
+                // 初始化=>將所有分頁全部隱藏 
+                boxs.hide();
+                // 初始化=>移除所有分頁btn-lg屬性
+                btns.removeClass('btn-lg');
+                // 取得modalBtn按鈕的data-self值，並指派給getDataSelf變數
+                let getDataSelf = $(this).attr('data-self');
+                 // 單獨顯示點選到的分頁
+                $(getDataSelf).show();
+            });
+
+            closeBtn.click(function () {
+                // 運用parent()找到<div class="coverBox" id="myModal">
+                let thisModal = $(this).parent().parent().parent();
+                // 將myModal頁面隱藏起來
+                thisModal.hide();
+            });
+        });
+    </script>
+</body>
+
+</html>

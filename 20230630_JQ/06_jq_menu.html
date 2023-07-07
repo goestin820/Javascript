@@ -21,7 +21,7 @@
             <div class="col-1">
                 編號
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 圖片
             </div>
             <div class="col-1">
@@ -38,7 +38,7 @@
             <div class="col-1">
                 1
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 <img src="https://picsum.photos/id/241/200/200" alt="">
             </div>
             <div class="col-1">
@@ -55,11 +55,11 @@
             <div class="col-1">
                 1
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 <img src="https://picsum.photos/id/241/200/200" alt="">
             </div>
             <div class="col-1">
-                <input type="number" class="form-control price" name="price" value="100">
+                <input type="number" class="form-control price" name="price" value="200">
             </div>
             <div class="col-1">
                 <input type="number" class="form-control num" name="num" value="1" min="0">
@@ -85,41 +85,45 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        // JQUERY 放在ready內
+        // 1.改變時 抓price num
+        // 2.result = price * num
+        // 3.total = result，只要改變，全部資料變動
+        // 4.sum = all total 
         $(document).ready(function () {
-            let rows = $('.row');
-            let totals = $('.total');
+            // 1.綁定
+            let rows = $('.row'); //綁定所有的row class
+            let totals = $('.total'); //綁定所有的total class
 
-
-            // 1.改變時 抓price num
-            // 2.result = price * num
-            // 3.total = result
-            // 4.sum = all total
-
+            // 2.num class的change事件
             $('.num').change(function (e) {
-                let numVaule = $(this).val();
-                console.log('numVaule', numVaule);
+                let numValue = $(this).val();
+                console.log('numValue', numValue);
 
-                // 只要改變
-                // 全部資料變動
-                $.each(rows, function (indexInArray, valueOfElement) {
-                    if (indexInArray > 0) {
-                        // console.log('valueOfElement', valueOfElement);
+                // 將rows的全部資料存取出來
+                $.each(rows, function (key, value) {
+                    if (key > 0) {
+                        console.log('key', key);
+                        console.log('value', value);
                         // 抓row -> price x number 
-                        // result -> total
-                        let priceValue = Number($(valueOfElement).find('.price').val());
-                        let numValue = Number($(valueOfElement).find('.num').val());
+                        let priceValue = Number($(value).find('.price').val());
+                        let numValue = Number($(value).find('.num').val());
+                        console.log('priceValue', priceValue);
                         let result = priceValue * numValue;
 
-                        let total = $(valueOfElement).find('.total');
+                        // 將result存入total的值
+                        // let total = Number($(value).find('.total'));
+                        let total = $(value).find('.total');
                         total.val(result);
-                        // console.log('priceValue', priceValue);
 
-                        // 全部的都做加總
+                        // 將全部的total值加總
                         let sum = 0;
-                        $.each(totals, function (indexInArray, valueOfElement) { 
-                             sum = sum + Number($(this).val());
+                        $.each(totals, function (indexInArray, valueOfElement) {
+                            console.log('indexInArray', indexInArray);
+                            console.log('valueOfElement', valueOfElement);
+                            console.log('$(this).val()',$(this).val());
+                            sum = sum + Number($(this).val());
                         });
+
                         $('#myP').text(sum);
                     }
                 });

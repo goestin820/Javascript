@@ -63,7 +63,7 @@
         let dataObj = {
             img: ['28', '29', '30']
         }
-        
+
         console.log('dataObj.img', dataObj.img);
         console.log('dataObj', dataObj);
 
@@ -90,6 +90,22 @@
 
             const btns = $('.btn');
             const myImg = $('#myImg');
+
+            // 練習二 抓obj
+            // 先用each取得全部btn，再執行click事件
+            $.each(btns, function (key, value) {
+                $(value).click(function (e) {
+
+                    // 方法2-1 data-set vs data
+                    // let dataPic = $(this).attr('data-pic');
+                    // console.log('dataPic', dataPic);
+                    // console.log(`https://picsum.photos/id/${data[dataPic]}/800/500`);
+                    // myImg.attr('src', `https://picsum.photos/id/${data[dataPic]}/800/500`)
+
+                    // 方法2-2 dataObj vs indexInArray
+                    myImg.attr('src', `https://picsum.photos/id/${dataObj.img[key]}/800/500`)
+                });
+            });
             // console.log('btns', btns);
             // 練習一
             // $.each(btns, function (indexInArray, valueOfElement) {
@@ -101,20 +117,6 @@
             //     });
             // });
 
-            // 練習二 抓obj
-            $.each(btns, function (indexInArray, valueOfElement) {
-                $(valueOfElement).click(function (e) {
-
-                    // 方法2-1 data-set vs data
-                    // let dataPic = $(this).attr('data-pic');
-                    // console.log('dataPic', dataPic);
-                    // console.log(`https://picsum.photos/id/${data[dataPic]}/800/500`);
-                    // myImg.attr('src', `https://picsum.photos/id/${data[dataPic]}/800/500`)
-
-                    // 方法2-2 dataObj vs indexInArray
-                    myImg.attr('src', `https://picsum.photos/id/${dataObj.img[indexInArray]}/800/500`)
-                });
-            });
 
             // 1. btns jq-obj
             // 2. btns foreach (key , value)
@@ -122,7 +124,6 @@
             //   this  -> btn element
             // 3. value or this -> jq-obj
             // 4. jq-obj -> 增加一個事件 click
-
 
             // 不用each 增加每個click
             btns.click(function (e) {
