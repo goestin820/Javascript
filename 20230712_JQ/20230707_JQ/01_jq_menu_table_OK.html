@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid mt-3">
+        <h2 id="myH2">Menu</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, dolorem!</p>
+        <table class="table table-hover table-bordered border-primary">
+            <thead class="text-center">
+                <tr>
+                    <th width="5%">品項</th>
+                    <th width="8%">圖片</th>
+                    <th width="15%">價格</th>
+                    <th width="15%">數量</th>
+                    <th>小計</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr>
+                    <td>
+                        <div class="mt-4">
+                            1
+                        </div>
+                    </td>
+                    <td>
+                        <img src="https://picsum.photos/id/42/100/100" alt="">
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-price" value="100" readonly>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-num" value='0' min="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-total" value='0'>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="mt-4">
+                            2
+                        </div>
+                    </td>
+                    <td>
+                        <img src="https://picsum.photos/id/43/100/100" alt="">
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-price" value="150" readonly>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-num" value='0' min="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-total" value='0'>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="mt-4">
+                            3
+                        </div>
+                    </td>
+                    <td>
+                        <img src="https://picsum.photos/id/44/100/100" alt="">
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-price" value="200" readonly>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-num" value='0' min="0">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="mt-4">
+                            <input type="number" class="form-control menu-total" value='0' readonly>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="5" height="100px">
+                        <div class="mt-4">
+                            小計：total加總 = <span id="myResult"></span>元
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">calculate
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Button modal 彈跳視窗-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    total: <span id="modalResult">12345</span>
+                    <div id="bonus" class="text-danger">666</div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        //  綁定
+        const myPrice = $('.menu-price');
+        const myNum = $('.menu-num');
+        const myTotal = $('.menu-total');
+        const myResult = $('#myResult');
+        const modalResult = $('#modalResult');
+        const bonus = $('#bonus');
+        // console.log('myPrice', myPrice);
+        // console.log('myNum', myNum);
+        // console.log('myTotal', myTotal);
+
+        // 預設display none -> jquery hide()
+        bonus.hide();
+
+        // JQUERY 放在ready內
+        $(document).ready(function () {
+
+            //宣告gstSum()函式
+            //全部加總
+            // 1. 取得 全部的total -> sum
+            // 2. sum -> myResult text
+            // 3. 重構 ->重複程式碼 變成function
+
+            function getSum() {
+                let sum = 0;
+                $.each(myTotal, function (indexInArray, valueOfElement) {
+                    console.log('indexInArray', indexInArray);
+                    console.log('valueOfElement', valueOfElement);
+                    let totalVaule = Number($(valueOfElement).val());
+                    sum = sum + totalVaule;
+                    console.log('sum', sum);
+                });
+                myResult.text(sum);
+                modalResult.text(sum);
+
+                bonus.hide();
+                // 1.調整num 全部total 加總
+                // 2.總共多少btn 全部total 超過300打八折
+                if (sum > 300) {
+                    let bonusValue = sum * 0.8;
+                    bonus.text(`恭喜您 超過300 獲得 優惠八折 => ${bonusValue}`);
+                    bonus.show();
+                }
+
+            }
+
+            // 4. 呼叫函式 -> getSum();
+            getSum();
+
+            // 方法一
+            $.each(myNum, function (indexInArray, valueOfElement) {
+                // console.log('indexInArray', indexInArray);
+                // console.log('valueOfElement', valueOfElement);
+                $(valueOfElement).click(function () {
+                    // console.log('this', this);
+
+
+                    // 1-1 單行小計
+                    // 抓到num
+                    let numValue = Number($(this).val());
+                    // console.log('numValue', numValue);
+                    // 抓到price
+                    // 先到tr 再到price
+                    let trNow = $(this).parent().parent().parent();
+                    let priceNow = trNow.find('.menu-price');
+                    let priceValue = Number(priceNow.val());
+                    // num * price 
+                    let totalValue = priceValue * numValue;
+                    console.log('totalValue', totalValue);
+                    // 存到total => set
+                    let totalNow = trNow.find('.menu-total');
+                    console.log('totalNow', totalNow);
+                    totalNow.val(totalValue); // set
+
+                    // bs modal
+
+                    // total -> sum
+                    getSum();
+                    // tottal -> sum end
+
+                });
+
+            });
+        });
+        // jquery end
+    </script>
+</body>
+
+</html>

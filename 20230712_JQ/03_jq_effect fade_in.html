@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .box {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="d-grid gap-2">
+                    <button type="button" name="" id="fadeInBtn" class="btn btn-primary">fadeInBtn Button</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-grid gap-2">
+                    <button type="button" name="" id="fadeOutBtn" class="btn btn-danger">fadeOutBtn Button</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 vh-100">
+        <div class="box w-100 h-75 bg-dark">
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // JQUERY 放在ready內
+        $(document).ready(function () {
+            const fadeInBtn = $('#fadeInBtn');
+            const fadeOutBtn = $('#fadeOutBtn');
+            // const showBtn = $('#showBtn');
+            const box = $('.box');
+
+            // const x = 10;
+            // console.log('x',x);
+
+            // x = 100; 
+            // console.log('x',x);
+
+            // fadeIn 淡入 dispaly none -> display block
+            fadeInBtn.click(function () {
+                // box.fadeIn(10000);
+                // box.fadeIn('slow');
+                box.fadeIn(3000);
+                box.fadeIn();
+            });
+
+            // fadeOut 淡出 dispaly block -> display none
+            fadeOutBtn.click(function () {
+                // box.fadeIn(10000);
+                // box.fadeIn('slow');
+                box.fadeOut(3000);
+                box.fadeOut();
+            });
+        });
+    </script>
+</body>
+
+</html>
