@@ -59,26 +59,28 @@
                 </div>
             </div>
             <div class="col">
-                <label class="form-label">甜度</label>
-                <select class="form-select sugerInput" name="iceInput">
-                    <option value="少糖" selected>少糖</option>
-                    <option value="正常">正常</option>
+                <label for="sugarInput" class="form-label">甜度</label>
+                <select class="form-select sugerInput" name="sugarInput">
+                    <option value="正常" selected>正常</option>
+                    <option value="少糖">少糖</option>
                     <option value="半糖">半糖</option>
                     <option value="微糖">微糖</option>
+                    <option value="無糖">無糖</option>
                 </select>
             </div>
             <div class="col">
-                <label for="" class="form-label">冰塊</label>
+                <label for="iceInput" class="form-label">冰塊</label>
                 <select class="form-select iceInput" name="iceInput">
-                    <option value="少冰" selected>少冰</option>
+                    <option value="正常" selected>正常</option>
+                    <option value="少冰">少冰</option>
+                    <option value="微冰">微冰</option>
                     <option value="去冰">去冰</option>
-                    <option value="正常">正常</option>
                 </select>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="psInput" class="form-label">價格</label>
-                    <input id="psInput" type="text" class="form-control">
+                    <input id="psInput" type="text" class="form-control psInput">
                 </div>
             </div>
         </div>
@@ -110,26 +112,27 @@
     <script>
         $(document).ready(function () {
             const itemBtn = $('.itemBtn')
-            const exDiv = $('#exDiv');
             const nameInput = $('.nameInput');
             const numInput = $('.numInput');
-            const psInput = $('.psInput');
             const sugerInput = $('.sugerInput');
             const iceInput = $('.iceInput');
+            const psInput = $('.psInput');
             const checkBtn = $('#checkBtn');
-            const containerItems = $('#container-items');
+            const exDiv = $('#exDiv'); //購買明細資料          
+            const containerItems = $('#container-items');  //商品資料列
 
             let i = 0; //click 第幾個
 
-
             // 按鈕名稱
             $.each(itemBtn, function (indexInArray, valueOfElement) {
-                let stockName = $(this).attr('data-stock-name');
-                $(valueOfElement).text(`${stockName}`);
+                let stockName = $(this).attr('data-stock-name'); //取得各按鈕的data-stock-name屬性值
+                // let stockPrice = $(this).attr('data-price');
+                $(valueOfElement).text(`${stockName}`); //將取得的data-stock-name屬性值屬性值放入按鈕顯示文字內容
             });
 
             // 選擇品項
             itemBtn.click(function () {
+                // <div class="item-row row mt-5">
                 let getRowStockName = $('.item-row').first().find('.stockName').val();
                 console.log('getRowStockName',getRowStockName);
                 console.log('getRowStockName.length',getRowStockName.length);
@@ -146,13 +149,16 @@
                 // lastRow.find('input').val('');
 
                 let stockName = $(this).attr('data-stock-name');
+                let stockPrice = $(this).attr('data-price');
                 console.log('stockName', stockName);
+                console.log('stockPrice', stockPrice);
+
 
                 lastRow.find('.stockName').val(stockName);
                 lastRow.find('.numInput').val('1');
-                lastRow.find('.psInput').val('');
-                lastRow.find('.sugerInput').val('少糖');
-                lastRow.find('.iceInput').val('少冰');
+                lastRow.find('.sugerInput').val('正常');
+                lastRow.find('.iceInput').val('正常');
+                lastRow.find('.psInput').val(stockPrice);
 
             });
 
@@ -174,9 +180,9 @@
                 i++;
                 let name = nameInput.val();
                 let num = numInput.val();
-                let ps = psInput.val();
                 let suger = sugerInput.val();
                 let ice = iceInput.val();
+                let ps = psInput.val();
 
                 let content = `<p class="text-primary">第${i}項 商品 ${name} ${num}杯 ${suger} ${ice} ${ps}</p>`;
                 exDiv.append(content);
