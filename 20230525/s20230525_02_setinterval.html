@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- setTimeout -->
+    <!-- 過一段時間做....動作 -->
+    <button type="button" id="startBtn">startBtn</button>
+    <button type="button" id="stopBtn">stopBtn</button>
+    <p id="result">原本的文字</p>
+    <script>
+        // function
+
+
+
+
+        // 綁定
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const result = document.getElementById('result');
+
+        let time = 10;
+        startBtn.addEventListener('click', function () {
+            // setTimeout(function , 時間);
+            // setInterval(function , 時間);
+
+            // 練習一
+            // 倒數 10 -> 0
+            // clearInterval 連續中斷
+            let myInterVal = setInterval(function () {
+                time = time - 1;
+                result.innerText = time;
+                if (time <= 0) {
+                    clearInterval(myInterVal);
+                }
+                // console.log('myInterval ok');
+            }, 1000);
+
+            // 練習二
+            // 按下時 停止 
+            //  1 2 3 4 5 ..... 15 stop 停止
+
+
+        });
+
+    </script>
+</body>
+
+</html>

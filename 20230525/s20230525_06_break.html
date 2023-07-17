@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // break 整個迴圈中斷
+        document.write(`break<br>`);
+        for (let i = 1; i <= 10; i++) {
+            if (i == 4) {
+                break;
+            }
+            document.write(`${i}<br>`);
+
+        }
+        // continue 跳掉
+        document.write(`continue<br>`);
+        for (let i = 1; i <= 10; i++) {
+            if (i == 4) {
+                continue;
+            }
+            document.write(`${i}<br>`);
+
+        }
+
+        // 假設員工 發獎金
+        // 所有的訂單 ........        
+        let myArr = [50, 100, 300, 20, 300, 55, 100, 200, 33];
+        // 練習一 總共的營業額是多少
+        // 練習二 >= 100 總共的營業額是多少
+        // 練習三 <100 總共的營業額是多少
+        // 練習四 第一筆300 index 多少 ....break
+
+        let sum = 0;
+        myArr.forEach(function (value, key) {
+            sum = sum + value;
+            return false; //continue;
+            console.log('key',key);
+            console.log('value',value);
+        });
+        console.log('sum', sum);
+
+        let sumFor = 0;
+        for (let i = 0; i < myArr.length; i++) {
+            sumFor = sumFor + myArr[i];
+        }
+        console.log('sumFor', sumFor);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        .test{
+
+        }
+    </style>
+    <link rel="stylesheet" href="style.css"> -->
+
+</head>
+
+<body>
+
+    
+    
+    <script>
+        test123();
+
+        // break 整個迴圈中斷
+        document.write(`break<br>`);
+        for (let i = 1; i <= 10; i++) {
+            if (i == 4) {
+                break;
+            }
+            document.write(`${i}<br>`);
+
+        }
+        // continue 跳掉
+        // 每個都做
+        // 條件碰到 不做
+        // 我每個人都發6000
+        // 排富 資產超過一億 不要發
+        // if( money > 一億)
+        // continue
+        // 發6000()
+
+        // for (let index = 0; index < array.length; index++) {
+        //     if(money > 100000000){
+        //         continue;
+        //     }
+        //     get6000();
+            
+        // }
+
+        document.write(`continue<br>`);
+        for (let i = 1; i <= 10; i++) {
+            if (i == 4) {
+                continue;
+            }
+            document.write(`${i}<br>`);
+
+        }
+
+        // 假設員工 發獎金
+        // 所有的訂單 ........        
+        let myArr = [50, 100, 300, 20, 300, 55, 100, 200, 33];
+        // 練習一 總共的營業額是多少
+        // 練習二 >= 100 總共的營業額是多少
+        // 練習三 <100 總共的營業額是多少
+        // 練習四 第一筆300 index 多少 ....break
+
+        // for
+        // 練習一
+        let sumFor = 0;
+        for (let i = 0; i < myArr.length; i++) {
+
+            sumFor = sumFor + myArr[i];
+        }
+        console.log('sumFor', sumFor);
+
+        // 練習二
+        let sum100 = 0;
+        for (let i = 0; i < myArr.length; i++) {
+            if (myArr[i] >= 100) {
+                continue;
+            }
+            sum100 = sum100 + myArr[i];
+        }
+        console.log('sum100', sum100);
+
+        // 練習三
+        let sum99 = 0;
+        for (let i = 0; i < myArr.length; i++) {
+            if (myArr[i] < 100) {
+                sum99 = sum99 + myArr[i];
+            }
+        }
+        console.log('sum99', sum99);
+
+        // 練習四
+        // 300 first index ?
+        for (let i = 0; i < myArr.length; i++) {
+            if (myArr[i] == 300) {
+                console.log(`first value=300 key is => ${i}`);
+                // 有加break只會顯示第一筆
+                break; 
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
