@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ball</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: lightblue;
+            text-align: center;
+        }
+
+        h2 {
+            color: green;
+        }
+
+        h4 {
+            color: red;
+        }
+
+        .time {
+            color: blue
+        }
+
+        .container {
+            width: 500px;
+            border: 1px solid black;
+            text-align: center;
+            padding: 30px;
+            margin: 50px auto;
+        }
+
+        button {
+            width: 200px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>投籃大賽</h1>
+    <div class="container">
+        <h3>
+            分數
+        </h3>
+        <h2>
+            歷史最高分數<span id="scoreHighSpan">55688</span>
+        </h2>
+        <h4>
+            <span id="score">0</span>
+        </h4>
+        <hr>
+        <h4 class="time">
+            <span id="time"></span>
+        </h4>
+    </div>
+    <div class="container">
+        <button type="button" id="startBtn">開始</button>
+        <button type="button" id="inBtn">進球</button>
+        <button type="button" id="resetBtn">重置</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // JQUERY 放在ready內
+        // 官網 推薦 用更簡短的方式表達
+        $(function () {
+            const startBtn = $('#startBtn');
+            const inBtn = $('#inBtn');
+            const resetBtn = $('#resetBtn');
+            const score = $('#score');
+            const time = $('.time');
+            const scoreHighSpan = $('#scoreHighSpan');
+
+            const initScore = 0;
+            const initTime = 3;
+
+            let scoreNow = initScore;
+            let timeNow = initTime;
+            let isGame = true;
+
+            let scoreHighHistory = localStorage.getItem("scoreHigh");
+            console.log('scoreHighHistory', scoreHighHistory);
+            if (scoreHighHistory > 0) {
+                scoreHighSpan.text(scoreHighHistory);
+            }
+
+            inBtn.hide();
+            score.text(scoreNow);
+            time.text(timeNow);
+
+            //開始button
+            startBtn.click(function () {
+                $(this).hide();
+                inBtn.show();
+
+                const myIntervel = setInterval(timeFun, 1000);
+
+                console.log('timeFun', timeFun);
+            });
+
+            //進球button
+            inBtn.click(function () {
+                console.log('inBtn ok');
+
+                if (timeNow > 30) {
+                    scoreNow = scoreNow + 2;
+                } else {
+                    scoreNow = scoreNow + 3;
+                }
+                score.text(scoreNow);
+            });
+
+            //倒數計時function
+            function timeFun() {
+                if (isGame == false) {
+                    return false;
+                }
+
+                timeNow--;
+                if (timeNow < 0) {
+                    clearInterval;
+
+                    inBtn.hide();
+                    startBtn.show();
+                    startBtn.text('結束遊戲');
+                    isGame = false;
+                    if (scoreNow > scoreHighHistory) {
+                        // localStorage.setItem('key', 'value')：將物件屬性的 key 和 value 當成參數傳入，可以在 storage 物件中加入屬性或修改原本的屬性內容。
+                        localStorage.setItem("scoreHigh", scoreNow);
+                        scoreHighSpan.text(scoreNow);
+                    }
+
+                    time.text(timeNow);
+                }
+            }
+
+            resetBtn.click(function () {
+                isGame = true;
+                scoreNow = initScore;
+                timeNow = initTime;
+                // startBtn.text('開始');
+                startBtn.text('重新開始');
+                score.text(scoreNow);
+                time.text(timeNow);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="mg1" id="ck1"></div>
+        <div class="mg1" id="ck2"></div>
+        <div class="mgd"></div>
+        <div class="mg4" id="ck3"></div>
+        <div class="mg6" id="ck4"></div>
+        <div class="mgd"></div>
+        <div class="mg5" id="ck5"></div>
+        <div class="mg0" id="ck6"></div>
+    </div>
+
+    <script>
+        function timeFun() {
+            // 1.存取本地端時間
+            const nt = new Date();
+            const nh = nt.getHours();
+            const nm = nt.getMinutes();
+            const ns = nt.getSeconds();
+            // console.log('nt', nt);
+            // console.log('nh', nh);
+            // console.log('nm', nm);
+            // console.log('ns', ns);
+
+            // 2.用除法及餘數方式拆解六個數字，也可以用字串分割方法
+            const nk1 = Math.floor(nh / 10);
+            const nk2 = nh % 10;
+            const nk3 = Math.floor(nm / 10);
+            const nk4 = nm % 10;
+            const nk5 = Math.floor(ns / 10);
+            const nk6 = ns % 10;
+            // console.log('nk1', nk1);
+            // console.log('nk2', nk2);
+            // console.log('nk3', nk3);
+            // console.log('nk4', nk4);
+            // console.log('nk5', nk5);
+            // console.log('nk6', nk6);
+
+            // 3.綁定HTML的每個div
+            const ck1 = document.getElementById('ck1');
+            const ck2 = document.getElementById('ck2');
+            const ck3 = document.getElementById('ck3');
+            const ck4 = document.getElementById('ck4');
+            const ck5 = document.getElementById('ck5');
+            const ck6 = document.getElementById('ck6');
+
+            // 4.設定每個位置的class屬性
+            ck1.setAttribute('class', `mg${nk1}`);
+            ck2.setAttribute('class', `mg${nk2}`);
+            ck3.setAttribute('class', `mg${nk3}`);
+            ck4.setAttribute('class', `mg${nk4}`);
+            ck5.setAttribute('class', `mg${nk5}`);
+            ck6.setAttribute('class', `mg${nk6}`);
+            // ck1.setAttribute('class', `mg1`);
+            // ck2.setAttribute('class', `mg1`);
+            // ck3.setAttribute('class', `mg4`);
+            // ck4.setAttribute('class', `mg6`);
+            // ck5.setAttribute('class', `mg5`);
+            // ck6.setAttribute('class', `mg0`);
+
+            let mgd = document.querySelectorAll('.mgd');
+            // mgd0=mgd[0].style.opacity
+            // mgd1=mgd[1].style.opacity
+            // console.log('mgd0',mgd0);
+            // console.log('mgd1',mgd1);
+            mgd[0].style.opacity = 1;
+            mgd[1].style.opacity = 1;
+            // mgd0=mgd[0].style.opacity
+            // mgd1=mgd[1].style.opacity
+            // console.log('mgd0', mgd0);
+            // console.log('mgd1', mgd1);
+            // console.log('mgd', mgd);
+
+            // 設定：符號每0.5秒閃一次，用setTimeout不是用setInterval，只會執行一次就結束
+            // setInterval(function() {
+            setTimeout(function () {
+                let mgd = document.querySelectorAll('.mgd');
+                mgd[0].style.opacity = 0;
+                mgd[1].style.opacity = 0;
+            }, 500)
+        }
+
+        // 讓程式一開始先執行一次timeFun()
+        timeFun();
+
+        // 讓程式每一秒執行一次timeFun()，setInterval持續執行不間斷
+        setInterval(timeFun, 1000);
+        console.log('timeFun', timeFun);
+    </script>
+</body>
+
+</html>
