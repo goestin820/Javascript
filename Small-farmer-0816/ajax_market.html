@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <style>
+        .name {
+            font-size: 24px;
+            width: 90%;
+            color: darkblue;
+            text-shadow: 2px 2px 2px skyblue;
+        }
+
+        .content {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        li {
+            width: 20%;
+            display: inline-block;
+            margin: 1%;
+            box-shadow: 2px 2px 10px #ccc;
+            padding: 10px;
+            vertical-align: top;
+            transition: all 0.5s;
+        }
+
+        li:hover {
+            transform: scale(1.15);
+            transition: all 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="header">jQuery</h1>
+    <h2 class="title"></h2>
+    <h3 class="city"></h3>
+
+    <ul class="event-list">
+
+    </ul>
+
+</body>
+
+</html>
+<script>
+    /********************************************************
+    * 1.api網址  https://kktix.com/events.json
+    * 2.選擇$.ajax()、$.get()、$.post()其中一種方式
+    * 3.建立回呼函式(call back function)來處理回應時的各項行為
+    * 4.建立錯誤處理
+    ********************************************************/
+
+    //利用$.ajax()方法傳送請求並取得回應
+    /*  $.ajax(
+       {
+         url:'https://kktix.com/events.json',
+         type:'get',
+         success:(res)=>{
+           console.log(res)
+           events(res)
+         },
+         error:()=>{
+           console.log("請求失敗")
+         }
+       }
+     )  */
+
+    function events(json) {
+        let events = json
+        // console.log('events',events)
+        // let title = events.title
+        // $(".title").text(title)
+        let title = events.records.datasetDescription
+        $(".title").text(title)
+        let locationName = events.records.location[0].locationName
+        $(".city").text(locationName)
+
+        let entry = events.entry
+        let records = events.records
+        console.log('records', records);
+        let location = events.records.location[0]
+        console.log('location', location);
+        let weatherElement = events.records.location[0].weatherElement
+        console.log('weatherElement', weatherElement);
+        let time = events.records.location[0].weatherElement[0].time
+        console.log('time', time);
+
+
+        time.forEach((event, idx) => {
+            console.log('event', event);
+            // let content = event.content.split("\n").map((item, idx) => { return item.split("：") });
+            // // console.log(content)
+            // <div class="content">${content[0][1]}</div>
+            //             <div class="content">${content[1][1]}</div>
+            let li = `<li>
+                        <div class="name">${event.parameter.parameterName}</div>
+                    </li>`;
+            $(".event-list").append(li);
+        })
+    }
+
+    //利用$.get()方法傳送請求並取得回應
+    $.get("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-57A21E6F-9E1B-4B50-8726-7F588AF855AA&locationName=%E6%96%B0%E5%8C%97%E5%B8%82", (res) => {
+        // console.log('res',res)
+        events(res)
+    })
+
+</script>
